@@ -1,0 +1,29 @@
+http://www.1point3acres.com/bbs/thread-144846-1-1.html
+
+
+我的思路：
+
+实际结果可用记录路径表示
+f函数表示，一定取第n项时的方案数
+f(只考虑前n项，已取第t个，目前和s）= (i=1 to n-1)sigma( f(只考虑前i项，已取第t-1个，s-list[n]）
+(下标从1算）
+最后结果合计f(1)...f(n)
+记忆化搜索
+
+边界条件
+f(任意，0，0) = 1
+f(任意，0，非0) = 0
+
+剪枝
+f(t,t,前t项之和)=1
+f(t,t,非前t项之和)=0
+
+最后t=4，疑惑：O(4*n^2)还是n^3 ?
+缺陷：s范围太大，hash？如果map，多关键字处理繁琐
+
+
+http://blog.csdn.net/doc_sgl/article/details/12462151
+http://blog.csdn.net/li4951/article/details/8693212
+http://www.2cto.com/kf/201402/278612.html
+http://blog.csdn.net/hcbbt/article/details/44063375
+http://www.tuicool.com/articles/aaIr6b
