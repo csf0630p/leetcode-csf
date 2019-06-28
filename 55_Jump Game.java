@@ -1,3 +1,4 @@
+//dp, O(n^2)/O(n)
 class Solution {
     public boolean canJump(int[] nums) {
         if (nums.length == 0) return false;
@@ -16,6 +17,7 @@ class Solution {
     }
 }
 
+//dp, O(n)/O(1)
 class Solution {
     public boolean canJump(int[] nums) {
         if (nums.length == 0) return false;
