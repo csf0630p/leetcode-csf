@@ -109,3 +109,52 @@ class Solution {
         computeRange(root.right, idx + 1);
     }
 }
+
+//bfs
+class Solution {  
+    public List<List<Integer>> verticalOrder(TreeNode root) {
+        List<List<Integer>> res = new ArrayList<>();
+        Map<Integer, List<Integer>> map = new HashMap<>();        
+        if (root == null) return res;
+        Queue<TreeNode> q = new LinkedList<>();
+        Queue<Integer> qi = new LinkedList<>();
+        q.add(root);
+        qi.add(0);
+        int min = 0, max = 0;
+        while (!q.isEmpty()) {
+            TreeNode cur = q.poll();                    
+            int pos = qi.poll();
+            min = Math.min(min, pos);
+            max = Math.max(max, pos);
+			//choice 1
+            if (map.containsKey(pos)) {
+                map.get(pos).add(cur.val);
+            } else {
+                List<Integer> temp = new LinkedList<>();
+                temp.add(cur.val);
+                map.put(pos, temp);    
+            }
+			//choice 2
+            if (!map.containsKey(pos)) {
+				map.put(pos, new LinkedList<>()); 
+            }			
+            map.get(pos).add(cur.val);			
+			//choice 3
+			map.putIfAbsent(pos, new LinkedList<>());
+			map.get(pos).add(cur.val);	
+			
+            if (cur.left != null) {
+                q.add(cur.left);
+                qi.add(pos - 1);
+            }
+            if (cur.right != null) {
+                q.add(cur.right);
+                qi.add(pos + 1);
+            }                            
+        }
+        for (int i = min; i <= max; i++) {
+            res.add(map.get(i));
+        }
+        return res;
+    }
+}
