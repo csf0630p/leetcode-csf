@@ -26,3 +26,7 @@ class Solution {
         return res.next;
     }
 }
+
+// 2.0 merge with Divide and Conquer O(nlogk)/O(n)+O(log k) <- stack memory
+// https://www.geeksforgeeks.org/merge-k-sorted-linked-lists/
+// https://blog.csdn.net/mine_song/article/details/69501383
