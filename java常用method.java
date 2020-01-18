@@ -9,8 +9,8 @@ import java.util.ArrayList;
 19 String s = "abc";
 20 s.charAt(0);
 21 s.length();
-22 s.substring(0, 1);
-23 s.substring(1);
+22 s.substring(0, 1); //from 0 to 1-1
+23 s.substring(1); //from 1 to end
 24 s.equals("b");
 25 s = s.trim();
 26 s.indexOf("a");
@@ -39,6 +39,7 @@ JavaSkillsForInterview.java
 47 int max = Integer.MAX_VALUE;
 48 int min = Integer.MIN_VALUE;
 49 Arrays.sort(a);
+	Arrays.fill(a, 0);
 50 for (int i = 0; i < c.length; i++) {
 51 System.out.println(c[i]);
 52 }
@@ -48,13 +49,15 @@ JavaSkillsForInterview.java
 54 List<Integer> list = new ArrayList<Integer>();
 55 ArrayList<Integer> list1 = new ArrayList<Integer>();
 56 List<List<Integer>> list2 = new ArrayList<List<Integer>>();
-57 list.add(0);
-58 list.add(0, 1);
+57 list.add(0); boolean add(E e)
+58 list.add(0, 1); void add(int index, E element)
 Page 2
 JavaSkillsForInterview.java
 59 list.get(0);
 60 list.size();
 61 list.remove(list.size() ‐ 1);
+//https://www.hollischuang.com/archives/3775
+	list.subList(0, 1)
 62 Collections.sort(list);
 63 Collections.sort(list, Collections.reverseOrder());
 64 Collections.sort(list, new Comparator<Integer>() {
@@ -76,6 +79,16 @@ JavaSkillsForInterview.java
 80 q.add(0);
 81 q.remove();
 82 q.peek();
+//https://blog.csdn.net/Lirx_Tech/article/details/51530420
+	Deque<Integer> q = new LinkedList<Integer>();
+	Deque<Integer> q = new ArrayDeque<Integer>();
+	boolean offerFirst | offerLast(E ele); // Deque
+	poll | pollFirst | pollLast();
+	peek | peekFirst | peekLast();
+	Queue的版本和Deque的First版本完全等价
+迎合Stack的风格，Deque还是提供了push/pop方法，让它用起来感觉是栈：只不过这两个方法默认的端口是队首
+         i. void push(E e);  // 等价于void addFirst(E e);
+         ii. E pop();  // 等价于E removeFirst();	
 Page 3
 JavaSkillsForInterview.java
 83 q.isEmpty();
@@ -94,6 +107,14 @@ JavaSkillsForInterview.java
 96 }
 97 map.isEmpty();
 98 map.size();
+	Map.Entry<Character, Integer> e : map.entrySet()
+	map.getOrDefault(Key, 0)
+	entry.getValue()
+	entry.getKey()	
+	
+https://blog.csdn.net/myblog_dhy/article/details/44618775
+	java.util.TreeMap.firstEntry()
+Map.Entry higherEntryerEntry(Object key);返回该map中大于指定key的最小的key-value键值对，若map为空，则返回为null；	
 99 // HashSet
 100 HashSet<Integer> set = new HashSet<Integer>();
 101 set.add(0);
@@ -104,7 +125,7 @@ JavaSkillsForInterview.java
 106 set.size();
 Page 4
 JavaSkillsForInterview.java
-107 // mini heap
+107 // minimum heap
 108 PriorityQueue<Integer> pq = new PriorityQueue<Integer>();
 109 pq.add(0);
 110 pq.remove();
@@ -117,3 +138,8 @@ JavaSkillsForInterview.java
 117
 118 }
 119
+https://blog.csdn.net/qq_37189949/article/details/54173455
+BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream("ming.txt")));
+https://blog.csdn.net/liuhenghui5201/article/details/8279557
+FileWriter fw = new FileWriter(String fileName);
+bufferedWriter bf = new bufferedWriter(Writer out );
