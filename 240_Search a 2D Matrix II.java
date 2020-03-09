@@ -1,7 +1,7 @@
 // 1.0 two pointers, O(r+c)/O(1)+O(r*c)
 //Amazon OA Edition
 class Solution {
-    private class PairInt{
+    class PairInt{
         int first;
         int second;
         PairInt(int first, int second) {
